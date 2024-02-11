@@ -1,3 +1,4 @@
+// Recursion + Memoization
 // T.C. = O(n*n*n)
 // S.C. = O(n*n*n) + O(n)
 /*
@@ -41,6 +42,10 @@ public:
 };
 */
 
+// Tabulation
+// T.C. = O(n*n*n)
+// S.C. = O(n*n*n)
+/*
 class Solution 
 {
 public:
@@ -84,5 +89,56 @@ public:
             }
         }
         return dp[0][0][m-1];
+    }
+};
+*/
+
+// Space Optimisation
+// T.C. = O(n*n*n)
+// S.C. = O(n*n)
+class Solution 
+{
+public:
+    int cherryPickup(vector<vector<int>>& grid) 
+    {
+        ios_base::sync_with_stdio(0);
+        cin.tie(0);
+        cout.tie(0);
+        int n = grid.size(), m = grid[0].size();
+        vector<vector<int>> front(m, vector<int>(m, 0)), cur(m, vector<int>(m, 0));
+        for(int i = n-1; i >= 0; i--)
+        {
+            for(int j1 = 0; j1 < m; j1++)
+            {
+                for(int j2 = 0; j2 < m; j2++)
+                {
+                    if(i == n-1)
+                    {
+                        cur[j1][j2] = grid[i][j1] + grid[i][j2];
+                        if(j1 == j2)
+                            cur[j1][j2] -= grid[i][j2];
+                    }
+                    else
+                    {
+                        int move = 0;
+                        for(int p = -1; p <= 1; p++)
+                        {
+                            for(int q = -1; q <= 1; q++)
+                            {
+                                if(j1 + p >= 0 && j1 + p < m && j2 + q >= 0 && j2 + q < m)
+                                {
+                                    move = max(move, front[j1+p][j2+q]);
+                                }
+                            }
+                        }
+                        cur[j1][j2] = move + grid[i][j1] + grid[i][j2];
+                        if(j1 == j2)
+                            cur[j1][j2] -= grid[i][j2];
+                    }
+                }
+            }
+            front = cur;
+        }
+        return front[0][m-1];
     }
 };
