@@ -5,8 +5,6 @@ public:
     {
         if(n <= 0)
             return 0;
-        if(n <= 1)
-            return 1;
         int temp = n, cnt = 0;
         while(temp > 0)
         {
