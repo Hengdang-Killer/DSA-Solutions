@@ -7,10 +7,11 @@ public:
         cin.tie(0);
         cout.tie(0);
         int ans = 0;
-        for(int i = 1; i <= nums.size(); i++)
-            ans ^= i;
-        for(auto &itr : nums)
-            ans ^= itr;
+        for(int i = 0; i < nums.size(); i++)
+        {
+            ans ^= i+1;
+            ans ^= nums[i];
+        }
         return ans;
     }
 };
