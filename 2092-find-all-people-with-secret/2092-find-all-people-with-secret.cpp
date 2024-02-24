@@ -12,7 +12,7 @@ public:
              {
                  return a[2] < b[2];
              });
-        map<int, map<int, int>> adj;
+        unordered_map<int, unordered_map<int, int>> adj;
         for(auto &itr : meetings)
         {
             adj[itr[0]][itr[1]] = 0;
