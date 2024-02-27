@@ -15,9 +15,7 @@ private:
     int recursiveHeight2(TreeNode *root, int &diameter)
     {
         if (!root)
-        {
             return 0;
-        }
         int lh = recursiveHeight2(root->left, diameter);
         int rh = recursiveHeight2(root->right, diameter);
         diameter = max(diameter, lh + rh);
