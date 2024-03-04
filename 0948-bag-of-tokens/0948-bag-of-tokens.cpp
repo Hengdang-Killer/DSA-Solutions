@@ -3,9 +3,6 @@ class Solution
 public:
     int bagOfTokensScore(vector<int>& tokens, int power) 
     {
-        ios_base::sync_with_stdio(0);
-        cin.tie(0);
-        cout.tie(0);
         sort(tokens.begin(), tokens.end());
         int n = tokens.size();
         int score = 0, ans = 0;
