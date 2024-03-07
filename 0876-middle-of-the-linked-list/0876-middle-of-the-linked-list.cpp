@@ -14,6 +14,8 @@ public:
     ListNode* middleNode(ListNode* head) 
     {
         ios_base::sync_with_stdio(0);
+        if(!head)
+            return head;
         int n = 0;
         ListNode *temp=head;
         while(temp != 0)
