@@ -1,3 +1,4 @@
+#pragma GCC optimize("O3", "unroll-loops")
 const int mod = 1e9+7;
 const int N = 50;
 int dp[N+1][N+1][N+1][1230];
@@ -53,11 +54,19 @@ public:
         }
         mp1[1e9] = idx;
         mp2[idx] = 1e9;
-        for(int i = 0; i<=n; i++)
-            for(int j = 0; j<=n; j++)
-                for(int jk = 0; jk<=k; jk++)
-                    for(int ik = 0; ik<=idx+1; ik++)
+        for(int i = 0; i <= n; i++)
+            for(int j = 0; j <= n; j++)
+                for(int jk = 0; jk <= k; jk++)
+                    for(int ik = 0; ik <= idx+1; ik++)
                         dp[i][j][jk][ik] = -1;
         return recursion(0, 0, 0, idx, k, nums);
     }
 };
+
+auto init = []()
+{ 
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    return 'c';
+}();
