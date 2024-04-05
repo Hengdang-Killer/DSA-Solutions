@@ -7,8 +7,9 @@ public:
         cin.tie(0);
         cout.tie(0);
         stack<char> stk;
-        for(char &ch : s)
+        for(int i = s.size()-1; i >= 0; i--)
         {
+            char ch = s[i];
             if(!stk.empty())
             {
                 char test = stk.top();
@@ -28,7 +29,6 @@ public:
             s.push_back(stk.top());
             stk.pop();
         }
-        reverse(s.begin(), s.end());
         return s;
     }
 };
