@@ -9,19 +9,17 @@ public:
         stack<char> stk;
         for(int i = s.size()-1; i >= 0; i--)
         {
-            char ch = s[i];
             if(!stk.empty())
             {
-                char test = stk.top();
-                if(test <= 'Z' && ch > 'Z' && test-'A' == ch-'a')
+                if(stk.top() <= 'Z' && s[i] > 'Z' && stk.top()-'A' == s[i]-'a')
                     stk.pop();
-                else if(test > 'Z' && ch <= 'Z' && test-'a' == ch-'A')
+                else if(stk.top() > 'Z' && s[i] <= 'Z' && stk.top()-'a' == s[i]-'A')
                     stk.pop();
                 else
-                    stk.push(ch);
+                    stk.push(s[i]);
             }
             else
-                stk.push(ch);
+                stk.push(s[i]);
         }
         s = "";
         while(!stk.empty())
