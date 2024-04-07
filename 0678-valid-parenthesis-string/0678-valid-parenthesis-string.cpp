@@ -29,6 +29,9 @@ private:
 public:
     bool checkValidString(string s) 
     {
+        ios_base::sync_with_stdio(0);
+        cin.tie(0);
+        cout.tie(0);
         vector<vector<int>> dp(s.size(), vector<int> (s.size() + 1, -1));
         return recursion(0, 0, s, dp);
     }
