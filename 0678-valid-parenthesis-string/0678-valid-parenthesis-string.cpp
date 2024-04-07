@@ -7,11 +7,11 @@ public:
         cin.tie(0);
         cout.tie(0);
         int openMin = 0, openMax = 0;
-        for(int i = 0; i < s.size(); i++)
+        for(auto &itr : s)
         {
-            if(s[i] == '(')
+            if(itr == '(')
                 openMin++, openMax++;
-            else if(s[i] == ')')
+            else if(itr == ')')
                 openMin--, openMax--;
             else
                 openMin--, openMax++;
