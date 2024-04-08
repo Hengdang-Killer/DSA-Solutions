@@ -3,9 +3,6 @@ class Solution
 public:
     int countStudents(vector<int>& students, vector<int>& sandwiches) 
     {
-        ios_base::sync_with_stdio(0);
-        cin.tie(0);
-        cout.tie(0);
         int ans = students.size(), circular = 0, square = 0;
         for(int &itr : students)
         {
