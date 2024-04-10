@@ -15,7 +15,7 @@ public:
             indices.push_back(i); // Initialize deque with indices 0, 1, 2, ..., n-1
         }
         
-        for (int card : deck) {
+        for (int &card : deck) {
             int idx = indices.front(); // Get the next available index
             indices.pop_front(); // Remove the index from the front
             result[idx] = card; // Place the card in the result array
