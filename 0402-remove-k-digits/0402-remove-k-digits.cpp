@@ -3,6 +3,9 @@ class Solution
 public:
     string removeKdigits(string &num, int k) 
     {
+        ios_base::sync_with_stdio(0);
+        cin.tie(0);
+        cout.tie(0);
         if(k >= num.size())
             return "0";
         stack<char> stk;        
