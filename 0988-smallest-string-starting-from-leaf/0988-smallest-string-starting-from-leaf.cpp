@@ -12,21 +12,34 @@
 class Solution 
 {
 private:
-     void dfs(TreeNode* node, string &temp, string &ans) 
-     {
+    bool check(string &temp, string &ans)
+    {
+       int i = temp.size()-1, j = ans.size()-1;
+        while(i >= 0 && j >= 0)
+        {
+            if(temp[i] < ans[j])
+                return 1;
+            else if(temp[i] > ans[j])
+                return 0;
+            i--, j--;
+        }
+        if(temp.size() < ans.size())
+            return 1;
+        return 0;
+    }
+    void dfs(TreeNode* node, string &temp, string &ans) 
+    {
         if (node == NULL) 
             return;
         temp.push_back(char('a' + node->val));
         if (node->left == NULL && node->right == NULL) 
         {
-            reverse(temp.begin(), temp.end());
-            if (ans.empty() || temp < ans)
+            if (ans.empty() || check(temp, ans))
                 ans = temp;
-            reverse(temp.begin(), temp.end());
         }
         dfs(node->left, temp, ans);
         dfs(node->right, temp, ans);
-         temp.pop_back();
+        temp.pop_back();
     }
 public:
     string smallestFromLeaf(TreeNode* root) 
@@ -36,6 +49,7 @@ public:
         cout.tie(0);
         string ans = "", temp = "";
         dfs(root, temp, ans);
+        reverse(ans.begin(), ans.end());
         return ans;
     }
 };
