@@ -7,31 +7,28 @@ public:
         cin.tie(0);
         cout.tie(0);
         vector<vector<int>> ans;
+        int cnt = 1;
         for(int i = 0; i < land.size(); i++)
         {
             for(int j = 0; j < land[0].size(); j++)
             {
                 if(land[i][j] == 1)
                 {
-                    int x = 300, y = 300, xx = 0, yy = 0;
-                    queue<pair<int, int>> q;
-                    q.push({i, j});
-                    land[i][j] = 0;
-                    while(!q.empty())
+                    int par = -1;
+                    if(i-1 >= 0 && land[i-1][j])
+                        par = land[i-1][j];
+                    if(par == -1 && j-1 >= 0 && land[i][j-1])
+                        par = land[i][j-1];
+                    if(par == -1)
+                        ans.push_back({i, j, i, j}), land[i][j] = cnt++;
+                    else
                     {
-                        int ax = q.front().first, ay = q.front().second;
-                        q.pop();
-                        x = min(x, ax), y = min(y, ay), xx = max(xx, ax), yy = max(yy, ay);
-                        if(ax-1 >= 0 && land[ax-1][ay])
-                            q.push({ax-1, ay}), land[ax-1][ay] = 0;
-                        if(ax+1 < land.size() && land[ax+1][ay])
-                            q.push({ax+1, ay}), land[ax+1][ay] = 0;
-                        if(ay-1 >= 0 && land[ax][ay-1])
-                            q.push({ax, ay-1}), land[ax][ay-1] = 0;
-                        if(ay+1 < land[0].size() && land[ax][ay+1])
-                            q.push({ax, ay+1}), land[ax][ay+1] = 0;
+                        ans[par-1][0] = min(ans[par-1][0], i);
+                        ans[par-1][1] = min(ans[par-1][1], j);
+                        ans[par-1][2] = max(ans[par-1][2], i);
+                        ans[par-1][3] = max(ans[par-1][3], j);
+                        land[i][j] = par;
                     }
-                    ans.push_back({x, y, xx, yy});
                 }
             }
         }
