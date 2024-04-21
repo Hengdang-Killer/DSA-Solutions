@@ -3,6 +3,9 @@ class Solution
 public:
     bool validPath(int n, vector<vector<int>>& edges, int source, int destination) 
     {
+        ios_base::sync_with_stdio(0);
+        cin.tie(0);
+        cout.tie(0);
         if(source == destination)
             return true;
         vector<int> adj[n];
