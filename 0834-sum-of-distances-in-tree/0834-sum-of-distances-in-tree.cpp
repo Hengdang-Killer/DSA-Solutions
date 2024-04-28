@@ -26,8 +26,11 @@ private:
         }
     }
 public:
-    vector<int> sumOfDistancesInTree(int n, vector<vector<int>> &edges) 
+    vector<int> sumOfDistancesInTree(int &n, vector<vector<int>> &edges) 
     {
+        ios_base::sync_with_stdio(0);
+        cin.tie(0);
+        cout.tie(0);
         vector<int> adj[n], ans(n, 0), cnt(n, 0);
         for (auto &itr : edges) 
         {
