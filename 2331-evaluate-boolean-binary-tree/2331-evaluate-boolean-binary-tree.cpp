@@ -16,9 +16,8 @@ public:
     {
         if(!root->left)
             return root->val;
-        bool ok1 = evaluateTree(root->left), ok2 = evaluateTree(root->right);
         if(root->val == 2)
-                return ok1 | ok2;
-        return ok1 & ok2;
+                return evaluateTree(root->left) | evaluateTree(root->right);
+        return evaluateTree(root->left) & evaluateTree(root->right);
     }
 };
