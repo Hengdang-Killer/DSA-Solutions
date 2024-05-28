@@ -3,17 +3,16 @@ class Solution
 public:
     int equalSubstring(string s, string t, int maxCost) 
     {
-        int n = s.size();
-        vector<int> cost(n);
-        for(int i = 0; i < n; i++)
-            cost[i] = abs(s[i] - t[i]);
+        ios_base::sync_with_stdio(0);
+        cin.tie(0);
+        cout.tie(0);
         int l = 0, r = 0, cur = 0, ans = 0;
-        while(r < n)
+        while(r < s.size())
         {
-            cur += cost[r];
+            cur += abs(s[r] - t[r]);
             while(cur > maxCost)
             {
-                cur -= cost[l];
+                cur -= abs(s[l] - t[l]);
                 l++;
             }
             ans = max(ans, r - l + 1);
