@@ -1,24 +1,19 @@
-class Solution 
-{
-private:
-    bool allNegative(vector<int> &nums)
-    {
-        for(auto &itr : nums)
-            if(itr >= 0) return 0;
-        return 1;
-    }
+class Solution {
 public:
     int maxSubArray(vector<int>& nums) 
     {
-        if(allNegative(nums))
-            return *max_element(nums.begin(), nums.end());
-        int sum = 0, ans = 0;
-        for(auto &itr : nums)
+        ios_base::sync_with_stdio(0);
+        cin.tie(0);
+        cout.tie(0);
+        int n = nums.size();
+        int ans = INT_MIN;
+        int sum = 0;
+        for(int i = 0; i < n; i++)
         {
-            sum += itr;
+            sum += nums[i];
+            ans = max(ans, sum);
             if(sum < 0)
                 sum = 0;
-            ans = max(ans, sum);
         }
         return ans;
     }
