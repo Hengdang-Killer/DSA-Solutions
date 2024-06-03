@@ -6,20 +6,16 @@ public:
         ios_base::sync_with_stdio(0);
         cin.tie(0);
         cout.tie(0);
-        vector<vector<int>> pos(26);
-        for(int i = 0; i < s.size(); i++)
+        int n = s.size(), m = t.size(), i = 0, j = 0;
+        while(i < n && j < m)
         {
-            pos[s[i]-'a'].push_back(i);
-        }
-        int lastPos = -1;
-        for(int i = 0; i < t.size(); i++)
-        {
-            auto itr = upper_bound(pos[t[i]-'a'].begin(), pos[t[i]-'a'].end(), lastPos);
-            if(itr == pos[t[i]-'a'].end())
-                return t.size() - i;
+            if(s[i] == t[j])
+                i++, j++;
             else
-                lastPos = *itr;
+                i++;
         }
+        if(j < m)
+            return m - j;
         return 0;
     }
 };
