@@ -11,18 +11,15 @@ public:
         {
             pos[s[i]-'a'].push_back(i);
         }
-        int ans = 0, lastPos = -1;
+        int lastPos = -1;
         for(int i = 0; i < t.size(); i++)
         {
             auto itr = upper_bound(pos[t[i]-'a'].begin(), pos[t[i]-'a'].end(), lastPos);
             if(itr == pos[t[i]-'a'].end())
-            {
-                ans = t.size() - i;
-                break;
-            }
+                return t.size() - i;
             else
                 lastPos = *itr;
         }
-        return ans;
+        return 0;
     }
 };
