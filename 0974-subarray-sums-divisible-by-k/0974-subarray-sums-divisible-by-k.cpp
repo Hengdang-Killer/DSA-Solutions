@@ -10,7 +10,7 @@ public:
         cin.tie(0);
         cout.tie(0);
         int sum = 0;
-        unordered_map<int, int> mp;
+        vector<int> mp(k, 0);
         mp[sum]++;
         int ans = 0;
         for(auto &itr : nums)
