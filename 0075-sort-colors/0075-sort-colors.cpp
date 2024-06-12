@@ -7,20 +7,11 @@ public:
         while(mid <= r)
         {
             if(nums[mid] == 0)
-            {
-                swap(nums[mid], nums[l]);
-                mid++,
-                l++;
-            }
+                swap(nums[mid++], nums[l++]);
             else if(nums[mid] == 1)
-            {
                 mid++;
-            }
             else
-            {
-                swap(nums[mid], nums[r]);
-                r--;
-            }
+                swap(nums[mid], nums[r--]);
         }   
     }
 };
