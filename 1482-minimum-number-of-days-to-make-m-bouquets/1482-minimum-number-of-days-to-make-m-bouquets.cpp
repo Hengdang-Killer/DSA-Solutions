@@ -24,9 +24,12 @@ private:
 public:
     int minDays(vector<int>& bloomDay, int m, int k) 
     {
+        ios_base::sync_with_stdio(0);
+        cin.tie(0);
+        cout.tie(0);
         if((long long)m*k > bloomDay.size())
             return -1;
-        int l = 0, r = 1e9, ans = 1e9;
+        int l = 1, r = 1e9, ans = 1e9;
         while(l <= r)
         {
             int mid = l + (r - l) / 2;
