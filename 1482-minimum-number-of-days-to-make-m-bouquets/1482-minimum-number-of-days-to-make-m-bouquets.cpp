@@ -10,19 +10,21 @@ private:
             {
                 cnt++;
                 if(cnt == k)
+                {
                     m--, cnt = 0;
+                    if(m <= 0)
+                        return 1;
+                }
             }
             else
                 cnt = 0;
         }
-        if(m <= 0)
-            return 1;
         return 0;
     }
 public:
     int minDays(vector<int>& bloomDay, int m, int k) 
     {
-        if(((long long)m)*((long long)k) > ((long long)bloomDay.size()))
+        if((long long)m*k > bloomDay.size())
             return -1;
         int l = 0, r = 1e9, ans = 1e9;
         while(l <= r)
