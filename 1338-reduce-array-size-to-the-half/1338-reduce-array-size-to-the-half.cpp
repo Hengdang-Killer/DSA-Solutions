@@ -3,6 +3,9 @@ class Solution
 public:
     int minSetSize(vector<int>& arr) 
     {
+        ios_base::sync_with_stdio(0);
+        cin.tie(0);
+        cout.tie(0);
         unordered_map<int, int> mp;
         for(auto &itr : arr)
             mp[itr]++;
