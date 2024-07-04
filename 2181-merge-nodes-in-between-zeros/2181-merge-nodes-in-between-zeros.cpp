@@ -34,7 +34,6 @@ public:
                 sum += head->val;
             head = head->next;
         }
-        root = nullptr;
         return ans;
     }
 };
