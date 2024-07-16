@@ -35,6 +35,9 @@ private:
 public:
     string getDirections(TreeNode* root, int startValue, int destValue) 
     {
+        ios_base::sync_with_stdio(0);
+        cin.tie(0);
+        cout.tie(0);
         string s1 = "", s2 = "", ans = "";
         findNode(root, startValue, destValue, s1, s2, ans);
         int idx = -1;
