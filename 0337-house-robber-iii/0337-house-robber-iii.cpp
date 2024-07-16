@@ -35,6 +35,9 @@ private:
 public:
     int rob(TreeNode* root) 
     {
+        ios_base::sync_with_stdio(0);
+        cin.tie(0);
+        cout.tie(0);
         unordered_map<TreeNode*, int> dp;
         return recursion(root, dp);
     }
