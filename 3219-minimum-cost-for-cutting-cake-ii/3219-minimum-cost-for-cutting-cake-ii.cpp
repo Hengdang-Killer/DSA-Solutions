@@ -3,6 +3,9 @@ class Solution
 public:
     long long minimumCost(int m, int n, vector<int>& h, vector<int>& v) 
     {
+        ios_base::sync_with_stdio(0);
+        cin.tie(0);
+        cout.tie(0);
         int verticalPieces = 1, horizontalPieces = 1;
         sort(v.rbegin(), v.rend());
         sort(h.rbegin(), h.rend());
