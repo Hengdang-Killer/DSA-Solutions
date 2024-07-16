@@ -12,31 +12,31 @@
 class Solution 
 {
 private:
-    bool findNode(TreeNode *root, int &node, string &s)
+    void findNode(TreeNode *root, int &node1, int &node2, string &s1, string &s2, string &cur)
     {
-        if(root->val == node)
-            return 1;
+        if(root->val == node1)
+            s1 = cur;
+        if(root->val == node2)
+            s2 = cur;
         if(root->left)
         {
-            s.push_back('L');
-            if(findNode(root->left, node, s))
-                return 1;
-            s.pop_back();
+            cur.push_back('L');
+            findNode(root->left, node1, node2, s1, s2, cur);
+            cur.pop_back();
         }
         if(root->right)
         {
-            s.push_back('R');
-            if(findNode(root->right, node, s))
-                return 1;
-            s.pop_back();
+            cur.push_back('R');
+            findNode(root->right, node1, node2, s1, s2, cur);
+            cur.pop_back();
         }
-        return 0;
+        return;
     }
 public:
     string getDirections(TreeNode* root, int startValue, int destValue) 
     {
-        string s1 = "", s2 = "";
-        findNode(root, startValue, s1), findNode(root, destValue, s2);
+        string s1 = "", s2 = "", ans = "";
+        findNode(root, startValue, destValue, s1, s2, ans);
         int idx = -1;
         for(int i = 0; i < min(s1.size(), s2.size()); i++)
         {
@@ -46,7 +46,6 @@ public:
                 break;
             }
         }
-        string ans = "";
         if(idx == -1)
         {
             if(s1.size() > s2.size())
