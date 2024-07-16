@@ -3,6 +3,9 @@ class Solution
 public:
     int minimumDiameterAfterMerge(vector<vector<int>>& edges1, vector<vector<int>>& edges2) 
     {
+        ios_base::sync_with_stdio(0);
+        cin.tie(0);
+        cout.tie(0);
         int v1 = 0, v2 = 0;
         int n = edges1.size() + 1, m = edges2.size() + 1;
         vector<int> inDegree1(n, 0), inDegree2(m, 0), adj1[n], adj2[m];
@@ -77,7 +80,6 @@ public:
                 }
             }
         }
-        cout << v1 << " " << v2 << " " << v1/2 + v2/2 + v1%2 + v2%2 + 1;
         return max({v1, v2, v1/2 + v2/2 + v1%2 + v2%2 + 1});
     }
 };
