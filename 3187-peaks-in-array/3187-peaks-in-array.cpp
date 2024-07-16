@@ -16,7 +16,6 @@ struct segment
     {
         if (start == end)
         {
-            st[node] = 0;
             if(start != 0 && start != n-1 && v[start] > v[start-1] && v[start] > v[start+1])
                 st[node] = 1;
             return;
