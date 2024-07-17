@@ -56,6 +56,9 @@ private:
 public:
     vector<TreeNode*> delNodes(TreeNode* root, vector<int>& to_delete) 
     {
+        ios_base::sync_with_stdio(0);
+        cin.tie(0);
+        cout.tie(0);
         sort(to_delete.begin(), to_delete.end());
         vector<TreeNode*> ans;
         TreeNode* cur = root;
