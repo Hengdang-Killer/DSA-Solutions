@@ -3,7 +3,9 @@ class Solution
 public:
     vector<int> sortJumbled(vector<int>& mapping, vector<int>& nums) 
     {
-        
+        ios_base::sync_with_stdio(0);
+        cin.tie(0);
+        cout.tie(0);
         map<int, vector<int>> mp;
         for(int i = 0; i < nums.size(); i++)
         {
