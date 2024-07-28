@@ -3,6 +3,9 @@ class Solution
 public:
     int secondMinimum(int n, vector<vector<int>>& edges, int time, int change) 
     {
+        ios_base::sync_with_stdio(0);
+        cin.tie(0);
+        cout.tie(0);
         vector<int> adj[n+1];
         for(auto &itr : edges)
             adj[itr[0]].push_back(itr[1]), adj[itr[1]].push_back(itr[0]);
