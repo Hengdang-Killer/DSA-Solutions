@@ -4,15 +4,15 @@ public:
     int minimumDeletions(string s) 
     {
         int n = s.size();
-        vector<int> dp(n+1, 0);
-        int b_cnt = 0;
+        int b_cnt = 0, cur = 0, nxt = 0;
         for(int i = 0; i < n; i++)
         {
             if(s[i] == 'b')
-                dp[i+1] = dp[i], b_cnt++;
+                nxt = cur, b_cnt++;
             else
-                dp[i+1] = min(dp[i] + 1, b_cnt);
+                nxt = min(cur + 1, b_cnt);
+            cur = nxt;
         }
-        return dp[n];
+        return cur;
     }
 };
