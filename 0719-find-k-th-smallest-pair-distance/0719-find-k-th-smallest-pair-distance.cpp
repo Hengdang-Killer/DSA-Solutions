@@ -1,19 +1,5 @@
 class Solution 
 {
-private:
-    int check(vector<int>& nums, int maxDistance) 
-    {
-        int cnt = 0, n = nums.size();
-        int l = 0, r = 0;
-        while(r < n) 
-        {
-            while (nums[r] - nums[l] > maxDistance)
-                l++;
-            cnt += r - l;
-            r++;
-        }
-        return cnt;
-    }
 public:
     int smallestDistancePair(vector<int>& nums, int k) 
     {
@@ -24,7 +10,14 @@ public:
         while (l <= r) 
         {
             int mid = l + (r - l) / 2;
-            int cnt = check(nums, mid);
+            int cnt = 0, left = 0, right = 0;
+            while(right < n) 
+            {
+                while (nums[right] - nums[left] > mid)
+                    left++;
+                cnt += right - left;
+                right++;
+            }
             if (cnt < k) 
                 l = mid + 1;
              else 
