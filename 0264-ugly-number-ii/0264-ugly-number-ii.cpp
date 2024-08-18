@@ -3,6 +3,9 @@ class Solution
 public:
     int nthUglyNumber(int n) 
     {
+        ios_base::sync_with_stdio(0);
+        cin.tie(0);
+        cout.tie(0);
         vector<int> dp(n);
         dp[0] = 1;
         int idxOf2 = 0, idxOf3 = 0, idxOf5 = 0;
