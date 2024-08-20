@@ -1,12 +1,12 @@
 class Solution 
 {
 private:
-    int recursion(int i, int j, int state, int n, vector<int> &suf, vector<int> &piles, vector<vector<vector<int>>> &dp)
+    int recursion(int i, int j, int n, vector<int> &suf, vector<int> &piles, vector<vector<int>> &dp)
     {
         if(i >= n)
             return 0;
-        if(dp[i][j][state] != -1)
-            return dp[i][j][state];
+        if(dp[i][j] != -1)
+            return dp[i][j];
         int val = 0, sum = 0;
         for(int k = 1; k <= 2*j; k++)
         {
@@ -14,10 +14,9 @@ private:
                 break;
             sum += piles[i + k - 1];
             int nxtM = max(k, j);
-            int nxtState = (state == 0) ? 1 : 0;
-            val = max(val, suf[i] - recursion(i + k, nxtM, nxtState, n, suf, piles, dp));
+            val = max(val, suf[i] - recursion(i + k, nxtM, n, suf, piles, dp));
         }
-        return dp[i][j][state] = val;
+        return dp[i][j] = val;
     }
 public:
     int stoneGameII(vector<int>& piles) 
@@ -30,7 +29,7 @@ public:
                 suf[i] += suf[i+1];
             suf[i] += piles[i];
         }
-        vector<vector<vector<int>>> dp(n, vector<vector<int>> (1e3, vector<int>(2, -1)));
-        return recursion(0, 1, 0, n, suf, piles, dp);
+        vector<vector<int>> dp(n, vector<int> (n+1, -1));
+        return recursion(0, 1, n, suf, piles, dp);
     }
 };
