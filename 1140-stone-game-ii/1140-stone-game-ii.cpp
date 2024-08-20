@@ -21,6 +21,9 @@ private:
 public:
     int stoneGameII(vector<int>& piles) 
     {
+        ios_base::sync_with_stdio(0);
+        cin.tie(0);
+        cout.tie(0);
         int n = piles.size();
         vector<int> suf(n, 0);
         for(int i = n-1; i >= 0; i--)
