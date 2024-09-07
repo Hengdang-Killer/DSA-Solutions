@@ -1,9 +1,17 @@
 # Write your MySQL query statement below
+WITH OrderCounts AS (
+    SELECT 
+        customer_number, 
+        COUNT(*) AS order_count
+    FROM 
+        Orders
+    GROUP BY 
+        customer_number
+)
 SELECT 
-    p1.customer_number
+    customer_number
 FROM 
-    Orders p1
-GROUP BY 
-    p1.customer_number
+    OrderCounts
 ORDER BY 
-    COUNT(p1.customer_number) DESC LIMIT 1;
+    order_count DESC
+LIMIT 1;
