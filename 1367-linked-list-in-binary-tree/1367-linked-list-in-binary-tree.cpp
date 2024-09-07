@@ -43,6 +43,9 @@ private:
 public:
     bool isSubPath(ListNode* head, TreeNode* root) 
     {
+        ios_base::sync_with_stdio(0);
+        cin.tie(0);
+        cout.tie(0);
         if(root == NULL)
             return false;
         return checkPath(root, head);
