@@ -1,8 +1,10 @@
 # Write your MySQL query statement below
-SELECT a1.player_id, a1.event_date AS first_login
-FROM Activity a1
-WHERE a1.event_date = (
-    SELECT MIN(a2.event_date)
-    FROM Activity a2
-    WHERE a2.player_id = a1.player_id
-);
+SELECT player_id, event_date AS first_login
+FROM (
+    SELECT
+        player_id, 
+        event_date, 
+        ROW_NUMBER() OVER (PARTITION BY player_id ORDER BY event_date) AS rn
+    FROM Activity
+) AS subquery
+WHERE rn = 1;
