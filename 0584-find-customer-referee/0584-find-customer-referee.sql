@@ -4,4 +4,4 @@ SELECT
 FROM 
     Customer cs
 WHERE 
-    COALESCE(cs.referee_id, 0) != 2;
+    cs.referee_id IS NULL OR cs.referee_id != 2;
