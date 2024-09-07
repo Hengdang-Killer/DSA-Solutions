@@ -1,9 +1,10 @@
 # Write your MySQL query statement below
 SELECT 
-    Employee.name, Bonus.bonus 
+    e.name, 
+    b.bonus
 FROM 
-    Employee
-        LEFT JOIN 
-    Bonus ON Employee.empid = Bonus.empid
-WHERE
-    bonus < 1000 OR bonus is NULL;
+    Employee e
+    LEFT JOIN Bonus b 
+        ON e.empid = b.empid
+WHERE 
+    COALESCE(b.bonus, 0) < 1000;
