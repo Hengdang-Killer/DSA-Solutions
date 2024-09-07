@@ -1,2 +1,12 @@
 # Write your MySQL query statement below
-SELECT W2.id FROM Weather W1, Weather W2 WHERE DateDIFF(W2.recordDate, W1.recordDate) = 1 AND W2.temperature > W1.temperature
+SELECT id 
+FROM (
+    SELECT 
+        id, 
+        recordDate, 
+        temperature, 
+        LAG(temperature) OVER (ORDER BY recordDate) AS prev_temperature, 
+        LAG(recordDate) OVER (ORDER BY recordDate) AS prev_date
+    FROM Weather
+) AS subquery
+WHERE DateDIFF(recordDate, prev_date) = 1 AND temperature > prev_temperature;
