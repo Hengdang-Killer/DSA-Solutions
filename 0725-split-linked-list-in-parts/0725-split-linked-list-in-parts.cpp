@@ -13,6 +13,9 @@ class Solution
 public:
     vector<ListNode*> splitListToParts(ListNode* head, int k) 
     {
+        ios_base::sync_with_stdio(0);
+        cin.tie(0);
+        cout.tie(0);
         vector<ListNode*> ans(k);
         // find total size of linked list
         ListNode *cur = head;
