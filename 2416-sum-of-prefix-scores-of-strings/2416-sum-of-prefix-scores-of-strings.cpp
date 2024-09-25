@@ -43,6 +43,9 @@ class Solution
 public:
     vector<int> sumPrefixScores(vector<string>& words) 
     {
+        ios_base::sync_with_stdio(0);
+        cin.tie(0);
+        cout.tie(0);
         root = new node();
         int n = words.size();
         for (int i = 0; i < n; i++) 
