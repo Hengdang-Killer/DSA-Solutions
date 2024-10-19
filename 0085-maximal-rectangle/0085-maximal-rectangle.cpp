@@ -3,6 +3,9 @@ class Solution
 public:
     int maximalRectangle(vector<vector<char>>& mat) 
     {
+        ios_base::sync_with_stdio(0);
+        cin.tie(0);
+        cout.tie(0);
         int n = mat.size(), m = mat[0].size();
         vector<vector<int>> cols(n, vector<int> (m, 0));
         for(int j = 0; j < m; j++)
